@@ -1,5 +1,11 @@
+import PeoplePage from './pages/PeoplePage'
+
 function App() {
-    return <></>
+    return (
+        <>
+            <PeoplePage />
+        </>
+    )
 }
 
 export default App
