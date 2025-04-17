@@ -14,6 +14,11 @@ body {
     font-family: var(--font-family);
     background-color: #101010;
     color: #ffffff;
+    background: url('./static/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-attachment: fixed;
 }
 
 .container {
@@ -25,4 +30,11 @@ body {
 .main__container {
     margin: 0 auto;
     max-width: 1110px;
+}
+
+.header__text {
+    line-height: 1.7;
+    font-size: 32px;
+    text-shadow: 0 0 2px var(--color-black);
+    color: var(--theme-default-header);
 }

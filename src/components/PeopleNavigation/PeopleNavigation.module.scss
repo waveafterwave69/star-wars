@@ -1,0 +1,18 @@
+.buttons {
+    display: flex;
+    column-gap: 20px;
+}
+
+.button {
+    border-radius: 3px;
+    border: 2px solid var(--color-white);
+    font-size: 28px;
+    padding: 8px 25px;
+
+    &:disabled {
+        color: red;
+        border: 2px solid #949494;
+        color: #949494;
+        cursor: default;
+    }
+}

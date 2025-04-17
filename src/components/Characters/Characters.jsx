@@ -5,18 +5,24 @@ import { useEffect, useState } from 'react'
 import { getApiResource, SWAPI_ROOT_PEOPLE } from '../../api/api'
 
 import { withErrorApi } from '../../hoc-helpers/withErrorApi'
+import PeopleNavigation from '../PeopleNavigation/PeopleNavigation'
+
+let firstPeople = 0
+let lastPeople = 12
+let resLenght
 
 function Characters({ setErrorApi }) {
     const [people, setPeople] = useState(null)
 
-    let firstPeople = 0
-    let lastPeople = 10
-
     const getResource = async (url) => {
-        const res = await getApiResource(url, firstPeople, lastPeople)
+        let res = await getApiResource(url)
 
-        if (res) {
-            const peopleList = res.map(({ name, url }) => {
+        resLenght = res.length
+
+        const resPersons = res.slice(firstPeople, lastPeople)
+
+        if (resPersons) {
+            const peopleList = resPersons.map(({ name, url }) => {
                 return {
                     name,
                     url,
@@ -30,18 +36,15 @@ function Characters({ setErrorApi }) {
     }
 
     useEffect(() => {
-        getResource(SWAPI_ROOT_PEOPLE)
+        firstPeople = 0
+        lastPeople = 12
+        getResource(SWAPI_ROOT_PEOPLE, firstPeople, lastPeople)
     }, [])
-
-    function nextPage() {
-        firstPeople += 10
-        lastPeople += 10
-    }
 
     return (
         <>
-            {/* <button onClick={nextPage}>next</button> */}
-            <h1>Navigation</h1>
+            <PeopleNavigation setPeople={setPeople} getResource={getResource} />
+
             {people && <CharactersList people={people} />}
         </>
     )

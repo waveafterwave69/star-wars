@@ -11,7 +11,7 @@ export const getApiResource = async (
     try {
         const response = await axios.get(url, {})
         const data = response.data
-        return data.slice(peopleFirstIndex, peopleLastIndex)
+        return data
     } catch (error) {
         console.error(error.message)
     }

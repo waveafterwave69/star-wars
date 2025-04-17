@@ -5,8 +5,14 @@
     --font-family: 'Inter', sans-serif;
 
     --color-white: #ffffff;
-    --color-border: #f2f4f5;
-    --color-gray: #6c7072;
+    --color-black: #000000;
+    --color-yellow: #ffff00;
+    --color-blue: #6a83fb;
 
-    --transition-duration: 0.2s;
+    --theme-default-header: #cccc46;
+    --theme-default-bg: url('./static/bg.jpg')
+
+    --font-size-header: 26px;
+
+    --transition-duration: 0.3s;
 }
