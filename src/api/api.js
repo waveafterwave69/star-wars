@@ -3,11 +3,7 @@ import axios from 'axios'
 export const SWAPI_ROOT = 'https://swapi.info/api'
 export const SWAPI_ROOT_PEOPLE = 'https://swapi.info/api/people'
 
-export const getApiResource = async (
-    url,
-    peopleFirstIndex,
-    peopleLastIndex
-) => {
+export const getApiResource = async (url) => {
     try {
         const response = await axios.get(url, {})
         const data = response.data

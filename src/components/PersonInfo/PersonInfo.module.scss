@@ -1,0 +1,17 @@
+.list {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+        background-color: rgba(0, 0, 0, 0.541);
+        width: 300px;
+        padding: 10px 15px;
+    }
+
+    &__item {
+        .item__title {
+            font-size: 22px;
+            color: var(--color-white);
+        }
+    }
+}

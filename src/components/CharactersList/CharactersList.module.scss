@@ -11,14 +11,14 @@
     &__item {
         padding: 50px 20px;
         width: 350px;
-        height: 300px;
+        height: 250px;
         text-align: center;
         font-size: 28px;
         font-weight: 800;
         background-color: #000000;
 
         & a {
-            color: red;
+            color: var(--theme-default-header);
             text-align: center;
             text-decoration: underline;
         }

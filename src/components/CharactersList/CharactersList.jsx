@@ -1,4 +1,5 @@
 import styles from './CharactersList.module.scss'
+import { Link } from 'react-router-dom'
 
 export default function CharactersList({ people }) {
     return (
@@ -6,9 +7,21 @@ export default function CharactersList({ people }) {
             <ul className={styles.list__container}>
                 {people.map((el) => (
                     <li className={styles.list__item} key={el.url}>
-                        <a href="#">
+                        <Link
+                            to={`/people/${
+                                el.url.length > 31
+                                    ? el.url.slice(
+                                          el.url.length - 2,
+                                          el.url.length
+                                      )
+                                    : el.url.slice(
+                                          el.url.length - 1,
+                                          el.url.length
+                                      )
+                            }`}
+                        >
                             <p>{el.name}</p>
-                        </a>
+                        </Link>
                     </li>
                 ))}
             </ul>
