@@ -4,6 +4,8 @@ import { SWAPI_ROOT_PEOPLE } from '../../api/api'
 
 import { useNavigate } from 'react-router-dom'
 
+import UIloading from '../UI/UIloading/UIloading'
+
 import { getApiResource } from '../../api/api'
 import React, { Suspense, useEffect, useState } from 'react'
 import { withErrorApi } from '../../hoc-helpers/withErrorApi'
@@ -61,7 +63,11 @@ function PersonCard({ setErrorApi }) {
                 <div className={styles.person__container}>
                     {personInfo && <PersonInfo personInfo={personInfo} />}
                     {personFilms && (
-                        <Suspense fallback="Загрузка">
+                        <Suspense
+                            fallback={
+                                <UIloading theme="base" isShadow={true} />
+                            }
+                        >
                             <PersonFilms personFilms={personFilms} />
                         </Suspense>
                     )}
