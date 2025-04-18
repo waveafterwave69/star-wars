@@ -12,3 +12,14 @@ export const getApiResource = async (url) => {
         console.error(error.message)
     }
 }
+
+export const filmsApi = async (url) => {
+    const res = await axios.all(
+        url.map((res) => {
+            const response = axios.get(res)
+            return response
+        })
+    )
+
+    return res
+}

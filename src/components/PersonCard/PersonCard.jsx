@@ -2,15 +2,20 @@ import { useParams } from 'react-router'
 import styles from './PersonCard.module.scss'
 import { SWAPI_ROOT_PEOPLE } from '../../api/api'
 
+import { useNavigate } from 'react-router-dom'
+
 import { getApiResource } from '../../api/api'
-import { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { withErrorApi } from '../../hoc-helpers/withErrorApi'
 import PersonInfo from '../PersonInfo/PersonInfo'
+
+const PersonFilms = React.lazy(() => import('../PersonFilms/PersonFilms'))
 
 function PersonCard({ setErrorApi }) {
     const { url } = useParams()
     const [personInfo, setPersonInfo] = useState(null)
     const [personName, setPersonName] = useState(null)
+    const [personFilms, setPersonFilms] = useState(null)
 
     useEffect(() => {
         const getId = async () => {
@@ -29,7 +34,9 @@ function PersonCard({ setErrorApi }) {
 
                 setPersonName(res.name)
 
-                // res.films
+                if (res.films) {
+                    setPersonFilms(res.films)
+                }
 
                 setErrorApi(false)
             } else {
@@ -40,13 +47,24 @@ function PersonCard({ setErrorApi }) {
         getId()
     }, [])
 
+    const navigate = useNavigate()
+
     return (
         <>
+            <div className={styles.da}></div>
+            <button onClick={() => navigate(-1)} className={styles.button}>
+                Back
+            </button>
             <div className={styles.wrapper}>
                 <h2 className={styles.person__name}>{personName}</h2>
 
                 <div className={styles.person__container}>
                     {personInfo && <PersonInfo personInfo={personInfo} />}
+                    {personFilms && (
+                        <Suspense fallback="Загрузка">
+                            <PersonFilms personFilms={personFilms} />
+                        </Suspense>
+                    )}
                 </div>
             </div>
         </>

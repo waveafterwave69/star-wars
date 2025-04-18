@@ -1,5 +1,17 @@
-.wrapper {
+.da {
     margin-top: 50px;
+}
+
+.button {
+    padding: 10px 25px;
+    border: 1px solid var(--color-white);
+    border-radius: 3px;
+    color: var(--color-white);
+    font-size: 20px;
+}
+
+.wrapper {
+    margin-top: 35px;
 }
 
 .person {
@@ -15,6 +27,8 @@
     &__container {
         display: flex;
         flex-wrap: wrap;
+        flex-direction: column;
+        row-gap: 20px;
         border-left: 5px solid var(--theme-default-header);
     }
 }
