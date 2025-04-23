@@ -1,3 +1,4 @@
+import FavPage from '../pages/FavPage'
 import HomePage from '../pages/HomePage'
 import NotFoundPage from '../pages/NotFoundPage'
 import PeoplePage from '../pages/PeoplePage'
@@ -7,10 +8,12 @@ const routesConfig = [
     {
         path: '/',
         element: <HomePage />,
+        name: 'Home',
     },
     {
         path: '/people',
         element: <PeoplePage />,
+        name: 'People',
     },
     {
         path: '/people/:url',
@@ -19,10 +22,15 @@ const routesConfig = [
     {
         path: '/notfound',
         element: <NotFoundPage />,
+        name: 'Not Found',
     },
     {
         path: '*',
         element: <NotFoundPage />,
+    },
+    {
+        path: '/fav',
+        element: <FavPage />,
     },
 ]
 

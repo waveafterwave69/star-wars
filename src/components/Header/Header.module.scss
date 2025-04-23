@@ -5,7 +5,14 @@
 .list {
     &__container {
         display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__container2 {
+        display: flex;
         column-gap: 20px;
+        align-items: center;
         margin-bottom: 30px;
     }
 
